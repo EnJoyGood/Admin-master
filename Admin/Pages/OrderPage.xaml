@@ -232,5 +232,6 @@
 
         <Button Width="220" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 15 65" Content="Добавление/изменение трек-номера" Style="{StaticResource MainBtn}" Click="TNumEdit"/>
         <Button Width="180" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 250 65" Content="Изменение статуса заказа" Style="{StaticResource MainBtn}" Click="EditStat"/>
+        <Button Width="180" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 445 65" Content="Удаление заказа" Style="{StaticResource MainBtn}" Click="DelOrder"/>
     </Grid>
 </Page>

@@ -63,6 +63,19 @@ namespace Admin.Pages
                 CustomMSGbox.Show("Для изменения выберите заказ!", CustomMSGbox.MsgTitle.Ошибка, CustomMSGbox.MsgButtons.Ок, CustomMSGbox.MsgButtons.Нет);
         }
 
+        private async void DelOrder(object sender, RoutedEventArgs e)
+        {
+            if (dg_order.SelectedItem != null)
+            {
+                var order = orders.FirstOrDefault(p => p.OrderId == (dg_order.SelectedItem as Order).OrderId);
+                await httpClient.DeleteAsync($"https://localhost:7236/order/{order.OrderId}");
+                searchTxt.Text = "";
+                LoadOrders();
+            }
+            else
+                CustomMSGbox.Show("Для удалениея выберите заказ!", CustomMSGbox.MsgTitle.Ошибка, CustomMSGbox.MsgButtons.Ок, CustomMSGbox.MsgButtons.Нет);
+        }
+
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
