@@ -1,0 +1,82 @@
+﻿<Window x:Class="Admin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Admin"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow" Icon="/16c076a6c7e0c6f871fb6d2a973178f5.jpg">
+    <Grid>
+        <TextBox x:Name="loginBox" Width="200" Height="26" FontSize="16" BorderBrush="Black"/>
+        <!--<TextBlock FontSize="14" Text="Логин" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 221, 255, 0" Foreground="Black" />-->
+        <PasswordBox x:Name="passBox" Width="200" Height="26" Margin="0, 100, 0, 0" FontSize="16" BorderBrush="Black"/>
+        <!--<TextBlock Name="Watermark" IsHitTestVisible="False" FontSize="14" Text="Пароль" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 261, 260, 0" Foreground="Black"/>-->
+        <Label Grid.Row="1" Margin="0, 20, 0, 350" Content="Добро пожаловать" FontSize="26" HorizontalAlignment="Center"/>
+        <!--<Image Grid.Row="1" Source="Source/logo11.png" Width="90" Height="90" VerticalAlignment="Bottom"/>-->
+
+        <Border Name="ButBorder" Height="25" BorderThickness="2" Margin="300, 300, 300, 0" Background="Black">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <!--<Setter Property="BorderBrush" Value="#FF2F5981"/>-->
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2F5981"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2D333D"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <Button x:Name="btn_auth" Click="btn_auth_Click" Content="Авторизоваться" FontSize="14" Foreground="Black">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Background" Value="#fff"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Name="bborder" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF466C91" />
+                                            <!--<Setter Property="Background" Value="#FF466C91" />-->
+                                        </Trigger>
+                                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.090" To="2,2,0,0"/>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF486C91" Duration="0:0:0.0002"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0"/>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF5380AC" Duration="0:0:0.0002"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+    </Grid>
+</Window>

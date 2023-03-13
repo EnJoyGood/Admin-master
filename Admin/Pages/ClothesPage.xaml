@@ -1,0 +1,130 @@
+﻿<Page x:Class="Admin.Pages.ClothesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Admin.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="625" d:DesignWidth="940"
+      Title="ClothesPage" Background="#fff">
+
+    <Grid>
+
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Text="Название товара"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="290,155,0,0"/>
+
+        <TextBox x:Name="txtTitle"
+                 Width="280"
+                 TextAlignment="Center"
+                 MaxLength="19"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin="214,185,0,0"
+                 Style="{StaticResource InBox}"
+                 TabIndex="0"/>
+
+        <!-- Description -->
+
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Text="Описание"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="320,295,0,0"/>
+
+        <TextBox x:Name="txtDesc"
+                 Width="280"
+                 MaxHeight="400"
+                 MaxLength="50"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin="214,325,0,0"
+                 Style="{StaticResource InBox}"
+                 TabIndex="3"/>
+
+        <!-- Price -->
+
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Text="Цена (₽)"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="232,225,0,0"/>
+
+        <TextBox x:Name="txtPrice"
+                 Width="100"
+                 TextAlignment="Center"
+                 MaxLength="6"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin="214,255,0,0"
+                 Style="{StaticResource InBox}"
+                 PreviewTextInput="TextBox_PreviewTextInput"
+                 TabIndex="1"/>
+
+        <!-- Counts -->
+
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Text="Кол-во"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="415,225,0,0"/>
+
+        <TextBox x:Name="txtCount"
+                 Width="100"
+                 TextAlignment="Center"
+                 MaxLength="4"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin="395,255,0,0"
+                 Style="{StaticResource InBox}"
+                 PreviewTextInput="TextBox_PreviewTextInput"
+                 TabIndex="2"/>
+
+        <!-- Image -->
+
+        <Border Width="160"
+                Height="210"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="589,150,0,0"
+                Background="#505050"
+                BorderBrush="Black"
+                BorderThickness="1">
+
+            <Image x:Name="img"
+                   Margin="5"
+                   Stretch="Fill"/>
+
+        </Border>
+
+        <Button Width="160"
+                Height="20"
+                Style="{StaticResource MainBtn}"
+                Content="Выбрать фото..."
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="589,370,0,0"
+                Click="BrowseBtn"/>
+
+        <!-- AddBtn -->
+
+        <Button Width="150"
+                Height="30"
+                FontSize="14"
+                Style="{StaticResource MainBtn}"
+                Content="Добавить товар"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,20,60"
+                Click="AddBtn"/>
+
+    </Grid>
+</Page>

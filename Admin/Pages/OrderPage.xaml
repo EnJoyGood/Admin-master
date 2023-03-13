@@ -1,0 +1,236 @@
+﻿<Page x:Class="Admin.Pages.OrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Admin.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="625" d:DesignWidth="940"
+      Title="OrderPage" Background="#fff">
+
+    <Grid>
+        <!--<Label Content="Управление заказами" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-14,0,0" Height="58"/>-->
+        <Border Name="ButBorder4" BorderThickness="1" Margin="860,50,22,540" Background="#FF2D333D">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#FF2D333D"/>
+                    <!--<Setter Property="BorderBrush" Value="#FF2F5981"/>-->
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2F5981"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2D333D"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Button x:Name="btn_ref" Click="btn_ref_Click" FontSize="14" Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Background" Value="#FF5380AC"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Name="bborder" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}" >
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Path Width="23" Height="22" Fill="White" Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Stretch="Fill"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF81B0DE" />
+                                            <Setter Property="Background" Value="#FF466C91" />
+                                        </Trigger>
+                                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.090" To="2,2,0,0"/>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF486C91" Duration="0:0:0.0002"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0"/>
+                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF5380AC" Duration="0:0:0.0002"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+
+        <DataGrid x:Name="dg_order" Margin="20, 100" AutoGenerateColumns="False" FontSize="14" FontFamily="Times New Roman" IsReadOnly="True" Background="#fff" BorderThickness="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID заказа" Binding="{Binding OrderId}" Width="0.5*"/>
+                <DataGridTextColumn Header="ID пользователя" Binding="{Binding UserId}" Width="0.8*"/>
+                <DataGridTextColumn Header="ID продукта" Binding="{Binding ProductId}" Width="*"/>
+                <DataGridTextColumn Header="Адрес пользователя" Binding="{Binding User.Address}" Width="*"/>
+                <DataGridTextColumn Header="Номер пользователя" Binding="{Binding User.PhoneNumber}" Width="*"/>
+                <DataGridTextColumn Header="Статус заказа" Binding="{Binding Status}" Width="*"/>
+                <DataGridTextColumn Header="Трек-номер" Binding="{Binding TrackNumber}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--<Border Name="ButBorder" Height="25" BorderThickness="1" VerticalAlignment="Bottom" Margin="750, 0, 20, 17" Background="#FF2D333D" Visibility="Visible">
+        <Border.Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush" Value="#FF2D333D"/>
+                -->
+        <!--<Setter Property="BorderBrush" Value="#FF2F5981"/>-->
+        <!--
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="PreviewMouseDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2F5981"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="PreviewMouseUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2D333D"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Button x:Name="btn_delemp" Click="btn_delemp_Click" Content="Удалить" FontSize="14" Foreground="White">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                    <Setter Property="Background" Value="#FF5380AC"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="bborder" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF81B0DE" />
+                                        -->
+        <!--<Setter Property="Background" Value="#FF466C91" />-->
+        <!--
+                                    </Trigger>
+                                    <EventTrigger RoutedEvent="PreviewMouseDown">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.090" To="2,2,0,0"/>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF486C91" Duration="0:0:0.0002"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="PreviewMouseUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0"/>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF5380AC" Duration="0:0:0.0002"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Border>
+
+    <Border Name="ButBorder2" Height="25" BorderThickness="1" VerticalAlignment="Bottom" Margin="550, 0, 220, 17" Background="#FF2D333D" Visibility="Visible">
+        <Border.Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush" Value="#FF2D333D"/>
+                -->
+        <!--<Setter Property="BorderBrush" Value="#FF2F5981"/>-->
+        <!--
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="PreviewMouseDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2F5981"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="PreviewMouseUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF2D333D"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Button x:Name="btn_cord" Click="btn_cord_Click" Content="Изменить статус" FontSize="14" Foreground="White">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                    <Setter Property="Background" Value="#FF5380AC"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="bborder" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF81B0DE" />
+                                        -->
+        <!--<Setter Property="Background" Value="#FF466C91" />-->
+        <!--
+                                    </Trigger>
+                                    <EventTrigger RoutedEvent="PreviewMouseDown">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.090" To="2,2,0,0"/>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF486C91" Duration="0:0:0.0002"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="PreviewMouseUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0"/>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF5380AC" Duration="0:0:0.0002"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Border>-->
+
+        <TextBlock Text="Поиск по ID заказа" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50 0 0 70"/>
+        <TextBox x:Name="searchTxt" Width="70" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="160 0 0 65" Style="{StaticResource InBox}" PreviewTextInput="TextBox_PreviewTextInput" KeyUp="TextBox_KeyUp"/>
+
+        <Button Width="220" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 15 65" Content="Добавление/изменение трек-номера" Style="{StaticResource MainBtn}" Click="TNumEdit"/>
+        <Button Width="180" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 250 65" Content="Изменение статуса заказа" Style="{StaticResource MainBtn}" Click="EditStat"/>
+    </Grid>
+</Page>

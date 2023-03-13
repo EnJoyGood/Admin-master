@@ -1,0 +1,64 @@
+﻿<Window x:Class="Admin.BasicWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Admin"
+        mc:Ignorable="d"
+        Title="BasicWindow" Height="650" Width="1060" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/16c076a6c7e0c6f871fb6d2a973178f5.jpg" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="625"/>
+        </Grid.RowDefinitions>
+
+        <!--<Grid Name="ToolBar" Grid.Row="0" Grid.Column="1" Background="Transparent" MouseDown="ToolBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Border Name="BRODER">
+                    <Image Name="MinBtn" Height="16" Width="16" Margin="5" MouseDown="MinBtn_MouseDown">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Source/line_pas.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinBtn}" Value="True">
+                                        <Setter Property="Source" Value="Source/line_act.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                        <Image.Effect>
+                            <BlurEffect Radius="2"></BlurEffect>
+                        </Image.Effect>
+                    </Image>
+                </Border>
+                <Image Name="ClsBtn" Height="15" Width="15" Margin="5, 5, 3, 5" MouseDown="ClsBtn_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/crest_pas.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ClsBtn}" Value="True">
+                                    <Setter Property="Source" Value="Source/crest_act.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="2"></BlurEffect>
+                    </Image.Effect>
+                </Image>
+            </StackPanel>
+        </Grid>-->
+
+        <ListBox Grid.RowSpan="2" Grid.Column="0" SelectionMode="Single" SelectionChanged="sidebar_SelectionChanged" x:Name="sidebar" Margin="0, 0, 3, 0" BorderThickness="0" Background="#fff" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <local:NavButton x:Name="clothesp" Navlink="/Pages/ClothesPage.xaml" NavText="Добавление товара" Margin="0,110,0,0" Padding="6" Icon="M16,21H8A1,1 0 0,1 7,20V12.07L5.7,13.07C5.31,13.46 4.68,13.46 4.29,13.07L1.46,10.29C1.07,9.9 1.07,9.27 1.46,8.88L7.34,3H9C9,4.1 10.34,5 12,5C13.66,5 15,4.1 15,3H16.66L22.54,8.88C22.93,9.27 22.93,9.9 22.54,10.29L19.71,13.12C19.32,13.5 18.69,13.5 18.3,13.12L17,12.12V20A1,1 0 0,1 16,21"/>
+            <!--<local:NavButton x:Name="employeep" Navlink="/Pages/EmployeePage.xaml" NavText="Сотрудники" Margin="0, 80, 0, 0" Padding="9" Icon="M7 12C9.2 12 11 10.2 11 8S9.2 4 7 4 3 5.8 3 8 4.8 12 7 12M11 20V14.7C9.9 14.3 8.5 14 7 14C3.1 14 0 15.8 0 18V20H11M15 4C13.9 4 13 4.9 13 6V18C13 19.1 13.9 20 15 20H22C23.1 20 24 19.1 24 18V6C24 4.9 23.1 4 22 4H15Z" Cursor="Hand"/>-->
+            <local:NavButton x:Name="orderp" Navlink="/Pages/OrderPage.xaml" NavText="Заказы" Margin="0,110,0,0" Padding="9" Icon="M20.71,4.04C21.1,3.65 21.1,3 20.71,2.63L18.37,0.29C18,-0.1 17.35,-0.1 16.96,0.29L15,2.25L18.75,6M17.75,7L14,3.25L4,13.25V17H7.75L17.75,7Z" Cursor="Hand"/>
+            <local:NavButton x:Name="btn_exit" PreviewMouseLeftButtonUp="btn_exit_PreviewMouseLeftButtonUp" Margin="0,110,0,0" PreviewMouseRightButtonUp="btn_exit_PreviewMouseLeftButtonUp" NavText="Выход" Padding="9" Icon="M12 0L11.34 .03L15.15 3.84L16.5 2.5C19.75 4.07 22.09 7.24 22.45 11H23.95C23.44 4.84 18.29 0 12 0M12 4C10.07 4 8.5 5.57 8.5 7.5C8.5 9.43 10.07 11 12 11C13.93 11 15.5 9.43 15.5 7.5C15.5 5.57 13.93 4 12 4M.05 13C.56 19.16 5.71 24 12 24L12.66 23.97L8.85 20.16L7.5 21.5C4.25 19.94 1.91 16.76 1.55 13H.05M12 13C8.13 13 5 14.57 5 16.5V18H19V16.5C19 14.57 15.87 13 12 13Z"/>
+        </ListBox>
+        <Frame Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden" x:Name="frametamer" Background="AliceBlue"/>
+    </Grid>
+</Window>
